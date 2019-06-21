@@ -3,12 +3,13 @@
 algo   : program codes for calculating RMSD
 query  : query structures in csv format. All the molecules in the same file are composed of the same number of atoms.
 target : dataset structures in csv format. All the molecules in the same file are composed of the same number of atoms.
-data   : program code for converting the sdf to csv files.
+sdf2csv   : program code for converting sdf to csv files.
 ---------------------------------------------------------------------------------------------
 @ Input and output of calculate_RMSDs.m
 -------
 
 input:
+ csv files for query and target (see below for the format)
  parameters (optional)
 
 output:
