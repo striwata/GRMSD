@@ -1,30 +1,31 @@
-RMSDã‚’è¨ˆç®—ã™ã‚‹ãŸã‚ã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ 2ç¨®ã§ã™.
-   ICP.m(äº¤äº’æœ€é©åŒ–æ³•)
-   three_points.m(3ç‚¹æ±ºã‚æ‰“ã¡æ³•)
+RMSD‚ðŒvŽZ‚·‚é‚½‚ß‚ÌƒAƒ‹ƒSƒŠƒYƒ€2Ží‚Å‚·.
+   ICP.m(ŒðŒÝÅ“K‰»–@)
+   Matching8.m iÚ‹óŠÔŠÉ˜a–@j
+   three_points.m(3“_Œˆ‚ß‘Å‚¿–@)
 
 
 
-ã©ã¡ã‚‰ã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚‚
-å…¥åŠ›
-ã€€A,B,label_A,label_B,permit_mirror
-å‡ºåŠ›
+‚Ç‚¿‚ç‚ÌƒAƒ‹ƒSƒŠƒYƒ€‚à
+“ü—Í
+@A,B,label_A,label_B,permit_mirror
+o—Í
   RMSD
-ã§ã™.
+‚Å‚·.
 
-å„å¤‰æ•°ã®èª¬æ˜Ž-----------------------------------------------
+Še•Ï”‚Ìà–¾-----------------------------------------------
 
-å…¥åŠ›
-A,B               :åŽŸå­ã®ï¼“æ¬¡å…ƒåº§æ¨™ãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ã™3*(åŽŸå­æ•°)ã®è¡Œåˆ—.åŽŸå­æ•°ãŒä¸€è‡´ã—ã¦ã„ãªã„å ´åˆã¯Aã®æ–¹ã®åŽŸå­æ•°ã‚’å°‘ãªãã—ã¦ãã ã•ã„.
-label_A,label_B   :å„åŽŸå­ã®åŽŸå­ç¨®ã‚’æ ¼ç´ã—ãŸé…åˆ—.åŽŸå­ç¨®ã®åŒºåˆ¥ãŒä¸å¿…è¦ãªå ´åˆã¯zeros(åŽŸå­æ•°)ã‚’æ¸¡ã—ã¾ã™.
-permit_mirror     :RMSDã‚’è¨ˆç®—ã™ã‚‹éš›ã®ç­‰é•·å¤‰æ›ã«é¡æ˜ ã‚’è¨±ã™ã‹å¦ã‹ã‚’è¡¨ã™è«–ç†å€¤.è¨±ã™å ´åˆã¯trueã‚’,ãã†ã§ãªã„å ´åˆã¯falseã‚’æ¸¡ã—ã¾ã™.
+“ü—Í
+A,B               :Œ´Žq‚Ì‚RŽŸŒ³À•Wƒf[ƒ^‚ð•\‚·3*(Œ´Žq”)‚Ìs—ñ.Œ´Žq”‚ªˆê’v‚µ‚Ä‚¢‚È‚¢ê‡‚ÍA‚Ì•û‚ÌŒ´Žq”‚ð­‚È‚­‚µ‚Ä‚­‚¾‚³‚¢.
+label_A,label_B   :ŠeŒ´Žq‚ÌŒ´ŽqŽí‚ðŠi”[‚µ‚½”z—ñ.Œ´ŽqŽí‚Ì‹æ•Ê‚ª•s•K—v‚Èê‡‚Ízeros(Œ´Žq”)‚ð“n‚µ‚Ü‚·.
+permit_mirror     :RMSD‚ðŒvŽZ‚·‚éÛ‚Ì“™’·•ÏŠ·‚É‹¾‰f‚ð‹–‚·‚©”Û‚©‚ð•\‚·˜_—’l.‹–‚·ê‡‚Ítrue‚ð,‚»‚¤‚Å‚È‚¢ê‡‚Ífalse‚ð“n‚µ‚Ü‚·.
 
-å‡ºåŠ›
-RMSD              :ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãŒæŽ¨å®šã™ã‚‹RMSDã®å€¤.
+o—Í
+RMSD              :ƒAƒ‹ƒSƒŠƒYƒ€‚ª„’è‚·‚éRMSD‚Ì’l.
 
 ------------------------------------------------------------
 
 
 
 ***
-åŽŸå­æ•°ãŒä¸€è‡´ã—ã¦ã„ã‚‹å ´åˆã¯ICP,three_pointsé–“ã§è¨ˆç®—æ™‚é–“,å‡ºåŠ›å€¤ã«å¤§å·®ã‚ã‚Šã¾ã›ã‚“.
-åŽŸå­æ•°ãŒä¸ä¸€è‡´ã®å ´åˆã¯three_pointsã®ã»ã†ãŒè¨ˆç®—æ™‚é–“,å‡ºåŠ›å€¤ã¨ã‚‚ã«å„ªã‚Œã¦ã„ã‚‹ã¨æ€ã‚ã‚Œã¾ã™.
+Œ´Žq”‚ªˆê’v‚µ‚Ä‚¢‚éê‡‚ÍICP,three_pointsŠÔ‚ÅŒvŽZŽžŠÔ,o—Í’l‚É‘å·‚ ‚è‚Ü‚¹‚ñ.
+Œ´Žq”‚ª•sˆê’v‚Ìê‡‚Íthree_points‚Ì‚Ù‚¤‚ªŒvŽZŽžŠÔ,o—Í’l‚Æ‚à‚É—D‚ê‚Ä‚¢‚é‚ÆŽv‚í‚ê‚Ü‚·.
