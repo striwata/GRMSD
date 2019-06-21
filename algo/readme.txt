@@ -1,7 +1,7 @@
-Two algorithms for G-RMSD:
+Three algorithms are provided for G-RMSD:
    ICP.m : AO (Alternate Optimization) method
    matching8.m : TSR (Target Space Relaxation) method
-   three_points.m : Three-points (3P) method
+   three_points.m : 3P (Three-points) method
 
 
 Input: A, B, label_A, label_B, permit_mirror
