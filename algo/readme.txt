@@ -22,4 +22,4 @@ permit_mirror : Permit chirality (true) or not (false) in the RMSD calculation. 
 
 The calculation times and the output are almost the same between the AO and TSR methods when comparing molecules composing the same number of atoms.
 
-The TSR method is better to compare molecules of different sizes.
+The TSR method would be better to compare molecules of different sizes.
