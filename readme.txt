@@ -1,12 +1,16 @@
+G-RMSD: Program code to determine molecular similarity in 3D
+
+------
 @ Folders:
 
 algo   : program codes for calculating RMSD
 query  : query structures in csv format. All the molecules in the same file are composed of the same number of atoms.
 target : dataset structures in csv format. All the molecules in the same file are composed of the same number of atoms.
 sdf2csv   : program code for converting sdf to csv files.
----------------------------------------------------------------------------------------------
-@ Input and output of calculate_RMSDs.m
+
 -------
+@ Input and output of calculate_RMSDs.m
+
 
 input:
  csv files for query and target (see below for the format)
