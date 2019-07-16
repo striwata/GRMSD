@@ -4,7 +4,7 @@ function[]=calculate_RMSDs(options)
 addpath('algo');
 addpath('algo/sub');
 
-%% optionsの確認
+%% options の確認
 %% get parameters from options
 try
     method=options.method;
