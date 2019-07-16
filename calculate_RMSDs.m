@@ -1,5 +1,5 @@
 function[]=calculate_RMSDs(options)
-%% pathの追加
+%% path の追加
 %% add paths
 addpath('algo');
 addpath('algo/sub');
