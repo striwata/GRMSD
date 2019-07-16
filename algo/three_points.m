@@ -84,6 +84,10 @@ else
         a2=AA(:,i2)-(AA(:,i2)'*AA(:,i1))*AA(:,i1)/AA_norm_list(i1)^2;
         %revision
         a3=cross(a1,a2);
+
+        if norm(a3)<1e-10
+            continue
+        end
         RA=[a1'/norm(a1);a2'/norm(a2);a3'/norm(a3)];
         
         AA=RA*AA;
@@ -133,6 +137,10 @@ else
                     b2=BB(:,j2)-(BB(:,j2)'*BB(:,j1))*BB(:,j1)/BB_norm_list(j1)^2;
                     %revision
                     b3=cross(b1,b2);
+
+                    if norm(b3)<1e-10
+                       continue
+                    end
                     RB=[b1'/norm(b1);b2'/norm(b2);b3'/norm(b3)];
                     
                     BBB=RB*BB;

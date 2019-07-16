@@ -1,8 +1,9 @@
 function[Motion20]=s20mentai()
 % 正二十面体の不変変換生成
+% invariant transformation of regular icosahedron
 
-GR = (1+sqrt(5))/2; % 黄金比
-Motion20 = zeros(3,3,120); % 正二十面体の不変変換
+GR = (1+sqrt(5))/2; % 黄金比 (golden ratio)
+Motion20 = zeros(3,3,120); % 正二十面体の不変変換 (invariant transformation of regular icosahedron)
 
 S20 = [GR GR 1 0 0 1 -GR -1 0 0 -1 -GR;
        -1 1 0 -GR -GR 0 -1 0 GR GR 0 1;

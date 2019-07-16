@@ -11,6 +11,7 @@ B_norm_list=zeros(1,data_num);
 for i=1:data_num
     A_norm_list(i)=norm(A(:,i));
     B_norm_list(i)=norm(B(:,i));
+    fprintf('A_norm and B_norm');
 end
 
 penalty=zeros(data_num);
@@ -49,6 +50,10 @@ for try_num=1:iter_num
     b1=B(:,j1)-(B(:,j1)'*B(:,j0))*B(:,j0)/(B_norm_list(j0)^2);
     b2=cross(B(:,j0),B(:,j1));
 
+    if norm(b2)<1e-10
+      continue
+    end
+
     RB=[b0'/norm(b0);b1'/norm(b1);b2'/norm(b2)];
     BB=RB*B;
 
@@ -80,6 +85,10 @@ for try_num=1:iter_num
             a0=A(:,i0);
             a1=A(:,i1)-(A(:,i1)'*A(:,i0))*A(:,i0)/(A_norm_list(i0)^2);
             a2=cross(A(:,i0),A(:,i1));
+
+            if norm(a2)<1e-10
+              continue
+            endif
 
             RA=[a0'/norm(a0);a1'/norm(a1);a2'/norm(a2)];
             AA=RA*A;

@@ -1,11 +1,12 @@
 % 接空間緩和法
+% Tangent Space Relaxation (TSR) method
 
 T = eye(n_data);
 % R = R0;
-R = eye(dim); % 初期直交行列
-F = zeros(1,10000); % 目的関数値
+R = eye(dim); % 初期直交行列 (initial orthogonal matrix)
+F = zeros(1,10000); % 目的関数値 (value of object function)
 alpha = [1/2,1/5,1/10,1/50,0,0.3,1]; 
-sub_alpha = 3; % パラメータα
+sub_alpha = 3; % パラメータα (parameter alpha)
 skew = zeros(n_data,n_data);
 temp = T;
 counter = 0;

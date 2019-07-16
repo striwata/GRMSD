@@ -1,9 +1,11 @@
 function[]=calculate_RMSDs(options)
-%% path‚Ì’Ç‰Á
+%% pathï¿½Ì’Ç‰ï¿½
+%% add paths
 addpath('algo');
-addpath('algo\sub');
+addpath('algo/sub');
 
-%% options‚ÌŠm”F
+%% optionsï¿½ÌŠmï¿½F
+%% get parameters from options
 try
     method=options.method;
 catch
@@ -25,7 +27,8 @@ end
 try
     ignore_atom=options.ignore_atom;
 catch
-    ignore_atom=1;
+%    ignore_atom=1;
+    ignore_atom=0;
 end
 try 
     clus_mode=options.clus_mode;
@@ -45,18 +48,21 @@ end
 if ~reduction
     iter_num=1;
 end
-%% query‚ÆtargetƒtƒHƒ‹ƒ_‚Ì’†g‚ðŒŸõ
-qInfo=dir('query'); %name‘®«‚Éƒtƒ@ƒCƒ‹–¼‚ªŠi”[
-query_num=length(qInfo)-2; %ƒtƒ@ƒCƒ‹‚Ì”
-tInfo=dir('target'); %name‘®«‚Éƒtƒ@ƒCƒ‹–¼‚ªŠi”[
-target_num=length(tInfo)-2; %ƒtƒ@ƒCƒ‹‚Ì”
+%% queryï¿½ï¿½targetï¿½tï¿½Hï¿½ï¿½ï¿½_ï¿½Ì’ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+%% get data from query and target folders
+qInfo=dir('query'); %nameï¿½ï¿½ï¿½ï¿½ï¿½Éƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[ (store file names to name-attribute)
+query_num=length(qInfo)-2; %ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ìï¿½ (the number of files)
+tInfo=dir('target'); %nameï¿½ï¿½ï¿½ï¿½ï¿½Éƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½[ (store file names to name-attribute)
+target_num=length(tInfo)-2; %ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ìï¿½ (the number of files)
 
 if(query_num==0 || target_num==0)
-    fprintf('queryƒtƒHƒ‹ƒ_ or targetƒtƒHƒ‹ƒ_ ‚Éƒtƒ@ƒCƒ‹‚ª‚ ‚è‚Ü‚¹‚ñ\n')
+    fprintf('queryï¿½tï¿½Hï¿½ï¿½ï¿½_ or targetï¿½tï¿½Hï¿½ï¿½ï¿½_ ï¿½Éƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½\n')
+    fprintf('no files in query and/or target folder(s)\n')
     return
 end
 
-%% mainˆ—
+%% mainï¿½ï¿½ï¿½ï¿½
+%% main process
 for q=1:query_num
     for t=1:target_num
         query=qInfo(q+2).name;
@@ -73,13 +79,14 @@ for q=1:query_num
         end
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        % ƒf[ƒ^‚Ì“Ç‚Ýž‚Ý
+        % ï¿½fï¿½[ï¿½^ï¿½Ì“Ç‚Ýï¿½ï¿½ï¿½
+        % loading data
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        data1=importdata(strcat('query\',query));
+        data1=importdata(strcat('query/',query));
         data_num_1=data1(1,1);
         mol_num_1=(size(data1,1)-1)/data_num_1;
 
-        data2=importdata(strcat('target\',target));
+        data2=importdata(strcat('target/',target));
         data_num_2=data2(1,1);
         mol_num_2=(size(data2,1)-1)/data_num_2;
 
@@ -117,7 +124,8 @@ for q=1:query_num
         end
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %RMSDŒvŽZ‚ÌŽÀs
+        %RMSDï¿½vï¿½Zï¿½ÌŽï¿½ï¿½s
+        % run RMSD calculations
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         fprintf(strcat(query(1:length(query)-4),'//',target(1:length(target)-4),'\n'))
         result=zeros(mol_num_1,mol_num_2);
@@ -128,7 +136,7 @@ for q=1:query_num
             for j=1:mol_num_2
                 now_num=now_num+1;
                 if(now_num/tot>progress)
-                    fprintf('*')
+                    fprintf('*');
                     progress=progress+0.1;
                 end
                 if strcmp(method,'three_points')
@@ -140,7 +148,8 @@ for q=1:query_num
         end
         fprintf('\n')
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %ŒvŽZŒ‹‰Ê‚Ì•Û‘¶
+        %ï¿½vï¿½Zï¿½ï¿½ï¿½Ê‚Ì•Û‘ï¿½
+        % store the results
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         csvwrite(strcat(query(1:length(query)-4),'_',target(1:length(target)-4),'_result.csv'),result)
     end
