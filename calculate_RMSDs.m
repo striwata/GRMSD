@@ -1,10 +1,10 @@
 function[]=calculate_RMSDs(options)
-%% path�̒ǉ�
+%% pathの追加
 %% add paths
 addpath('algo');
 addpath('algo/sub');
 
-%% options�̊m�F
+%% optionsの確認
 %% get parameters from options
 try
     method=options.method;
@@ -27,8 +27,8 @@ end
 try
     ignore_atom=options.ignore_atom;
 catch
-%    ignore_atom=1;
-    ignore_atom=0;
+    ignore_atom=1;
+%%    ignore_atom=[];  % consider H
 end
 try 
     clus_mode=options.clus_mode;
@@ -48,20 +48,20 @@ end
 if ~reduction
     iter_num=1;
 end
-%% query��target�t�H���_�̒��g������
+%% queryとtargetフォルダの中身を検索
 %% get data from query and target folders
-qInfo=dir('query'); %name�����Ƀt�@�C�������i�[ (store file names to name-attribute)
-query_num=length(qInfo)-2; %�t�@�C���̐� (the number of files)
-tInfo=dir('target'); %name�����Ƀt�@�C�������i�[ (store file names to name-attribute)
-target_num=length(tInfo)-2; %�t�@�C���̐� (the number of files)
+qInfo=dir('query'); %name属性にファイル名を格納 (store file names to name-attribute)
+query_num=length(qInfo)-2; %ファイルの数 (the number of files)
+tInfo=dir('target'); %name属性にファイル名を格納[ (store file names to name-attribute)
+target_num=length(tInfo)-2; %ファイルの数 (the number of files)
 
 if(query_num==0 || target_num==0)
-    fprintf('query�t�H���_ or target�t�H���_ �Ƀt�@�C��������܂���\n')
+    fprintf('queryフォルダ　または　targetフォルダにファイルがありません\n')
     fprintf('no files in query and/or target folder(s)\n')
     return
 end
 
-%% main����
+%% main処理
 %% main process
 for q=1:query_num
     for t=1:target_num
@@ -79,7 +79,7 @@ for q=1:query_num
         end
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        % �f�[�^�̓ǂݍ���
+        % データの読み込み
         % loading data
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         data1=importdata(strcat('query/',query));
@@ -124,7 +124,7 @@ for q=1:query_num
         end
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %RMSD�v�Z�̎��s
+        % RMSD計算の実行
         % run RMSD calculations
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         fprintf(strcat(query(1:length(query)-4),'//',target(1:length(target)-4),'\n'))
@@ -148,7 +148,7 @@ for q=1:query_num
         end
         fprintf('\n')
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %�v�Z���ʂ̕ۑ�
+        % 計算結果の保存
         % store the results
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         csvwrite(strcat(query(1:length(query)-4),'_',target(1:length(target)-4),'_result.csv'),result)
