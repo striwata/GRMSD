@@ -4,8 +4,8 @@ function[]=calculate_RMSDs(options)
 addpath('algo');
 addpath('algo/sub');
 
-%% options の確認
-%% get parameters from options
+% options の確認
+% get parameters from options
 try
     method=options.method;
 catch
@@ -28,7 +28,7 @@ try
     ignore_atom=options.ignore_atom;
 catch
     ignore_atom=1;
-%%    ignore_atom=[];  % consider H
+%    ignore_atom=[];  % consider H
 end
 try 
     clus_mode=options.clus_mode;
@@ -48,8 +48,8 @@ end
 if ~reduction
     iter_num=1;
 end
-%% queryとtargetフォルダの中身を検索
-%% get data from query and target folders
+% queryとtargetフォルダの中身を検索
+% get data from query and target folders
 qInfo=dir('query'); %name属性にファイル名を格納 (store file names to name-attribute)
 query_num=length(qInfo)-2; %ファイルの数 (the number of files)
 tInfo=dir('target'); %name属性にファイル名を格納[ (store file names to name-attribute)
@@ -61,8 +61,8 @@ if(query_num==0 || target_num==0)
     return
 end
 
-%% main処理
-%% main process
+% main処理
+% main process
 for q=1:query_num
     for t=1:target_num
         query=qInfo(q+2).name;
