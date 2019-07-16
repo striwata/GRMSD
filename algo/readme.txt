@@ -3,12 +3,12 @@ Three algorithms are provided for G-RMSD:
    matching8.m : TSR (Target Space Relaxation) method
    three_points.m : 3P (Three-points) method
 
-
 Input: A, B, label_A, label_B, permit_mirror
 Output: RMSD values
 
-for both of the algorithms.
+for any of the algorithms.
 
+*The 3P method is only for more than three-atoms both in the query and target.
 
 A, B : matrix of the cartesian coordinates of atoms. If the number of the atoms (NA for A, NB for B) are different, it should be NA < NB.
 
