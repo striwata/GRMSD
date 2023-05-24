@@ -3,7 +3,7 @@ a=size(A);
 b=size(B);
 data_num_A=a(2);
 data_num_B=b(2);
-%data_num_A<=data_num_B‚ğ‘z’è
+%data_num_A<=data_num_Bâ€šÃ°â€˜zâ€™Ã¨
 
 penalty=zeros(data_num_B,data_num_A);
 for i=1:data_num_B
@@ -29,7 +29,7 @@ if data_num_A==data_num_B
 
     for i=1:120
         R0 = Motion20(:,:,i);
-        if(det(R0)<0)
+        if(det(R0)<0) && ~permit_mirror
             continue
         end
         temp = eye(data_num_A);
@@ -62,7 +62,7 @@ else
             BB=B-B(:,j0)+A(:,i0);
             for i=1:120
                 R0 = Motion20(:,:,i);
-                if(det(R0)<0)
+                if(det(R0)<0) && ~permit_mirror 
                     continue
                 end
                 
